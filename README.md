@@ -65,3 +65,8 @@ docker run --rm -p 3000:3000 --env-file .env -e HOST=0.0.0.0 -e POLICY_MODE=enfo
 ```
 
 MAX_CLIENTS bounds the number of stored policy/identity combinations (default 10000). Duplicate free/pro key configuration is rejected at startup. Request headers and whole requests have timeouts. API-key authorization and admin metrics are verified by the test suite; metrics are deliberately not public.
+
+## Live demo and mobile themes
+Live demo: https://flowguard-rachit-api.onrender.com
+
+The header theme button switches between light and dark. The initial theme follows the device setting; an explicit choice is saved locally. Mobile layouts include touch-sized controls, 16px form text, stacked panels, and a keyboard-focusable horizontally scrollable history table. Tested at 320px and 390px widths without page-wide overflow.

@@ -1,7 +1,9 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {createRateLimiter,MemoryStore,ALGORITHMS} from '../src/middleware/rateLimiter.js';
-import {createApp} from '../src/server.js';
+import {createApp as configuredApp} from '../src/server.js';
+// Test servers explicitly choose policies independently of hosting environment variables.
+const createApp=(config={})=>configuredApp({mode:'lab',algorithm:'sliding-window',...config});
 for(const algorithm of ALGORITHMS)test(`${algorithm}: limits, isolation, recovery`,()=>{let now=10000;const c=createRateLimiter({algorithm,limit:2,windowMs:1000,clock:()=>now});assert.equal(c('a').remaining,1);assert.equal(c('a').remaining,0);assert.equal(c('a').allowed,false);assert.equal(c('b').allowed,true);now+=1000;assert.equal(c('a').allowed,true);});
 test('sliding window boundary',()=>{let now=0;const c=createRateLimiter({limit:2,windowMs:1000,clock:()=>now});c('a');now=600;c('a');now=1000;assert.equal(c('a').allowed,true);assert.equal(c('a').allowed,false);now=1600;assert.equal(c('a').allowed,true);});
 test('token bucket fractional refill',()=>{let now=0;const c=createRateLimiter({algorithm:'token-bucket',limit:2,windowMs:1000,clock:()=>now});c('a');c('a');now=250;assert.equal(c('a').allowed,false);now=500;assert.equal(c('a').allowed,true);assert.equal(c('a').allowed,false);});

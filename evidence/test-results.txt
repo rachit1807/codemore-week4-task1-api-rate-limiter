@@ -2,19 +2,19 @@
 > codemore-week4-task1-api-rate-limiter@1.0.0 test
 > node --test tests/*.test.js
 
-✔ sliding-window: limits, isolation, recovery (0.470084ms)
-✔ fixed-window: limits, isolation, recovery (0.076542ms)
-✔ token-bucket: limits, isolation, recovery (0.043084ms)
-✔ sliding window boundary (0.050084ms)
-✔ token bucket fractional refill (0.066583ms)
-✔ capacity and expiration (0.16475ms)
-✔ invalid config (0.052417ms)
-✔ HTTP concurrency, headers, auth, metrics and routes (43.179958ms)
-✔ forwarded address does not bypass quota (4.682209ms)
-✔ enforced policy rejects algorithm switching and preserves quota (5.517042ms)
-✔ capacity errors fail closed with 503 (1.906834ms)
-✔ startup rejects ambiguous keys and invalid policy (0.124209ms)
-✔ HTTP recovers after a rolling window expires (124.35ms)
+✔ sliding-window: limits, isolation, recovery (0.478792ms)
+✔ fixed-window: limits, isolation, recovery (0.070625ms)
+✔ token-bucket: limits, isolation, recovery (0.046208ms)
+✔ sliding window boundary (0.054709ms)
+✔ token bucket fractional refill (0.064417ms)
+✔ capacity and expiration (0.232292ms)
+✔ invalid config (0.092417ms)
+✔ HTTP concurrency, headers, auth, metrics and routes (43.213125ms)
+✔ forwarded address does not bypass quota (4.9205ms)
+✔ enforced policy rejects algorithm switching and preserves quota (6.065542ms)
+✔ capacity errors fail closed with 503 (1.552834ms)
+✔ startup rejects ambiguous keys and invalid policy (0.103ms)
+✔ HTTP recovers after a rolling window expires (123.613416ms)
 ℹ tests 13
 ℹ suites 0
 ℹ pass 13
@@ -22,4 +22,4 @@
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 230.784875
+ℹ duration_ms 227.355083
