@@ -1,0 +1,20 @@
+
+> codemore-week4-task1-api-rate-limiter@1.0.0 load-test
+> node scripts/load-test.js
+
+{
+  "timestamp": "2026-10-17T06:59:14.163Z",
+  "requests": 50,
+  "accepted": 10,
+  "throttled": 40,
+  "durationMs": 24,
+  "p50Ms": 16,
+  "p95Ms": 19,
+  "example429": {
+    "status": 429,
+    "ms": 14.032084000000001,
+    "limit": "10",
+    "remaining": "0",
+    "retryAfter": "10"
+  }
+}

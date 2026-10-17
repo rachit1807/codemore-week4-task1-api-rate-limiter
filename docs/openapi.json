@@ -1,0 +1,151 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "FlowGuard Rate Limiter API",
+    "version": "1.1.0",
+    "description": "Single-process teaching API. API keys are configured by the operator."
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "paths": {
+    "/api/public": {
+      "get": {
+        "summary": "Public sample",
+        "parameters": [
+          {
+            "name": "algorithm",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "sliding-window",
+                "fixed-window",
+                "token-bucket"
+              ]
+            },
+            "description": "Selectable in lab mode; enforced mode accepts only the configured policy."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Accepted"
+          },
+          "400": {
+            "description": "Invalid policy"
+          },
+          "401": {
+            "description": "Invalid or missing credentials"
+          },
+          "429": {
+            "description": "Quota exceeded; inspect Retry-After and X-RateLimit headers"
+          },
+          "503": {
+            "description": "Memory capacity reached"
+          }
+        },
+        "security": [
+          {},
+          {
+            "ApiKey": []
+          }
+        ]
+      }
+    },
+    "/api/protected": {
+      "get": {
+        "summary": "API-key protected sample",
+        "parameters": [
+          {
+            "name": "algorithm",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "sliding-window",
+                "fixed-window",
+                "token-bucket"
+              ]
+            },
+            "description": "Selectable in lab mode; enforced mode accepts only the configured policy."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Accepted"
+          },
+          "400": {
+            "description": "Invalid policy"
+          },
+          "401": {
+            "description": "Invalid or missing credentials"
+          },
+          "429": {
+            "description": "Quota exceeded; inspect Retry-After and X-RateLimit headers"
+          },
+          "503": {
+            "description": "Memory capacity reached"
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          }
+        ]
+      }
+    },
+    "/health": {
+      "get": {
+        "summary": "Liveness",
+        "responses": {
+          "200": {
+            "description": "Liveness"
+          }
+        }
+      }
+    },
+    "/api/config": {
+      "get": {
+        "summary": "Public configuration",
+        "responses": {
+          "200": {
+            "description": "Public configuration"
+          }
+        }
+      }
+    },
+    "/api/metrics": {
+      "get": {
+        "summary": "Administrator metrics",
+        "responses": {
+          "200": {
+            "description": "Administrator metrics"
+          },
+          "401": {
+            "description": "Admin token required"
+          }
+        },
+        "security": [
+          {
+            "AdminToken": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKey": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key"
+      },
+      "AdminToken": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}
