@@ -11,8 +11,10 @@
 - [x] Required src, tests and docs structure.
 - [x] Additional dashboard, admin metrics, CSV export, reset countdown, OpenAPI specification, server-enforced policy and bounded storage.
 - [x] Docker configuration and GitHub CI workflow prepared.
-- [ ] Publish public GitHub repository (next user-directed phase).
-- [ ] Optional live deployment and hosting-specific proxy validation (next phase).
+- [x] Public GitHub repository published: https://github.com/rachit1807/codemore-week4-task1-api-rate-limiter
+- [x] Live HTTPS deployment: https://flowguard-rachit-api.onrender.com
+- [x] Hosted key-based quotas and admin authorization verified.
+- [ ] Provider-specific anonymous client IP handling: anonymous callers may share proxy quotas; API-key callers have independent configured tiers.
 
 ## Verification limits
 13 tests passed locally on Node 24. Docker runtime was not available for a container build. GitHub CI will run only once the repository is published. No Redis service or distributed persistence is implemented. The in-memory implementation fully supports the assignment's in-memory option and is limited to one process. This checklist does not claim every conceivable product feature or production certification.

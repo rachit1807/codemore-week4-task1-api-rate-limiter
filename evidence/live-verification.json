@@ -1,0 +1,12 @@
+{
+  "url": "https://flowguard-rachit-api.onrender.com",
+  "health": 200,
+  "mode": "enforced",
+  "accepted": 10,
+  "throttled": 10,
+  "retryAfter": "10",
+  "proStatus": 200,
+  "proLimit": "30",
+  "adminStatus": 200,
+  "unauthorizedStatus": 401
+}
